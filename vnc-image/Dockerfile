@@ -1,8 +1,5 @@
 FROM archlinux:latest
-LABEL org.opencontainers.image.source="https://github.com/toast-ts/farmsim-docker"
-
-# additional files
-##################
+LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 # add supervisor conf file
 ADD build/supervisor.conf /etc/supervisor.conf
