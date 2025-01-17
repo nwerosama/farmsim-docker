@@ -4,19 +4,19 @@ set -e
 
 # needed packages
 
-echo "[info] Installing packages currently not installed..."
-pacman -S tinyproxy --noconfirm
+# echo "[info] Installing packages currently not installed..."
+# pacman -S tinyproxy --noconfirm
 
 # Double check if it's installed, because sometimes
 # it doesn't even install properly the first time
-echo "[info] Checking if tinyproxy is installed..."
-if ! pacman -Qi tinyproxy &>/dev/null; then
-  echo "[info] Tinyproxy is not even installed, trying again..."
-  pacman -S tinyproxy --noconfirm
-else
-  echo "[info] Tinyproxy is already installed, skipping..."
-  pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
-fi
+# echo "[info] Checking if tinyproxy is installed..."
+# if ! pacman -Qi tinyproxy &>/dev/null; then
+#   echo "[info] Tinyproxy is not even installed, trying again..."
+#   pacman -S tinyproxy --noconfirm
+# else
+#   echo "[info] Tinyproxy is already installed, skipping..."
+#   pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
+# fi
 
 # create file with contents of here doc, note EOF is NOT quoted to allow us to expand current variable 'install_paths'
 # we use escaping to prevent variable expansion for PUID and PGID, as we want these expanded at runtime of init.sh

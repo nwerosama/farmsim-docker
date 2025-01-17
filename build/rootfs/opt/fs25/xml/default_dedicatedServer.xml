@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <server>
-    <webserver port="7999">
+    <webserver port="8080">
         <initial_admin>
             <username>admin</username>
             <passphrase>password</passphrase>
