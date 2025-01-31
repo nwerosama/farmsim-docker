@@ -21,11 +21,6 @@ FARMSIM_DOCS_WINE_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
 FARMSIM_DOCS_WINE="$FARMSIM_DOCS_WINE_PARENT/FarmingSimulator2025"
 FARMSIM_DEDI_SOFTWARE="$FARMSIM_INSTALL_WINE/dedicatedServer.exe"
 FARMSIM_DEDI_XML="/opt/fs25/xml"
-HOST_LOGFOLDER="/opt/fs25/logs"
-
-# Clear Tinyproxy log prior to starting the webinterface
-echo -e "${GREEN}INFO: Clearing Tinyproxy log..${NOCOLOR}"
-echo "" > $HOST_LOGFOLDER/tinyproxy.log
 
 # Symlink the game profile directory
 if [ -d "$FARMSIM_DOCS_WINE" ]; then

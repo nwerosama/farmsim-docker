@@ -8,7 +8,7 @@ We will be using `/opt/fs25` as the default path.
 1. Obtain a copy of the game ([GIANTS eShop][giants-eshop])
    - Download the ZIP archive, not the `.iso` version.
 2. Prepare directories on the host
-   - 1. `$ sudo mkdir -p /opt/fs25/{docs,game,install,dlc,logs}`
+   - 1. `$ sudo mkdir -p /opt/fs25/{docs,game,install,dlc}`
    - 2. `$ sudo chown -R user:group /opt/fs25`
 3. Obtain the UID and GID from `id` command (default is `1000`)
    - This is a requirement as you will be passing that to the [docker-compose.yml]

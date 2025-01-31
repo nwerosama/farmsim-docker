@@ -15,7 +15,6 @@ services:
       - '/opt/fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
       - /opt/fs25/dlc:/opt/fs25/dlc
       - /opt/fs25/install:/opt/fs25/install
-      - /opt/fs25/logs:/opt/fs25/logs
       - '/opt/fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter'
     ports:
       - 5900:5900/tcp # VNC
