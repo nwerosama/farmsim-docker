@@ -1,3 +1,9 @@
 #!/bin/bash
 
-docker build -t farmsim-docker-vnc:latest .
+REGISTRY_URL=ghcr.io/nwerosama/farmsim-docker-vnc
+REGISTRY_TAG=latest
+GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+echo "Building on $GIT_BRANCH branch..."
+docker build -t $REGISTRY_URL:$REGISTRY_TAG .
+docker push $REGISTRY_URL:$REGISTRY_TAG
