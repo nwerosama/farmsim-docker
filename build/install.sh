@@ -31,6 +31,6 @@ sed -i '/# ENVVARS_PLACEHOLDER/{
 rm /tmp/envvars_heredoc
 
 # Symlinks
-
 ln -s /opt/fs25/setup_giants.sh /home/nobody/setup_giants.sh
 ln -s /opt/fs25/start_webserver.sh /home/nobody/start_webserver.sh
+ln -s /opt/fs25/start_gameserver.sh /home/nobody/start_gameserver.sh

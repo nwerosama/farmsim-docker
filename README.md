@@ -23,6 +23,10 @@ We will be using `/opt/fs25` as the default path.
 >[!IMPORTANT]
 You may need to delete the `dedicatedServer.xml` file that it generated on first launch and restart the panel.
 
+>[!IMPORTANT]
+If you like, you can enable the autostart feature to automatically start the panel and the game itself by setting `AUTOSTART_ENABLED=true` in the [docker-compose.yml] file.  
+**Not setting it will lead to startup crash by the container/supervisor!**
+
 >[!WARNING]
 If you already had an existing installation, delete the symlinked folder (`game`) from inside your install folder (`/opt/fs25/game`) before updating the game!  
 I also updated the [docker-compose.yml] file to directly mount host directory into the directory where game expects it to be, to hopefully prevent future issues.
