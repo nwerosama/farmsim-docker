@@ -79,7 +79,7 @@ fi
 
 # Check config if not exist then exit
 if [ -f "$FARMSIM_DOCS/dedicated_server/dedicatedServerConfig.xml" ]; then
-  echo -e "${GREEN}INFO: We can run the server now by clicking on 'Start Server' on the desktop!${NOCOLOR}"
+  echo -e "${GREEN}INFO: We can run the server now by clicking on 'Start Panel' on the desktop!${NOCOLOR}"
 else
   echo -e "${RED}ERROR: We are missing files?${NOCOLOR}" && exit
 fi
