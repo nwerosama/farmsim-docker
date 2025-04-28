@@ -41,11 +41,13 @@ check_dlc_installer() {
 # Map of DLC names and their installers
 declare -A dlc_installer_patterns=(
   ["macDonPack"]="FarmingSimulator25_macDonPack_*.exe"
+  ["nexatPack"]="FarmingSimulator25_nextPack_*.exe"
 )
 
 # Map of DLCs and their installers
 declare -A dlcs=(
   ["MacDon Pack"]="macDonPack"
+  ["Nexat Pack"]="nexatPack"
 )
 
 # Install DLC
