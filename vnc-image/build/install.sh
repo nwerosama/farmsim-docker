@@ -48,8 +48,7 @@ DEPENDENCIES=(
 PACKAGE_LIST="${DEPENDENCIES[*]}"
 
 echo "[info] Installing packages currently not installed..."
-pacman -Syu --noconfirm && \
-pacman -S ${PACKAGE_LIST} --noconfirm && \
+pacman -Syu ${PACKAGE_LIST} --noconfirm && \
 pacman -Rns $(pacman -Qdtq) --noconfirm && \
 pacman -Scc --noconfirm
 
