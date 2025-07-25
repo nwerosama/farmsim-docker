@@ -31,11 +31,10 @@ If you like, you can enable the autostart feature to automatically start the pan
 If you already had an existing installation, delete the symlinked folder (`game`) from inside your install folder (`/opt/fs25/game`) before updating the game!  
 I also updated the [docker-compose.yml] file to directly mount host directory into the directory where game expects it to be, to hopefully prevent future issues.
 
-# Reason for the fork
-
-I wanted to clean up the mess in bash scripts and to make it easier to maintain, as well as strip any stuff that I find useless.
-
-And to have an ability to launch the webinterface without running the setup script after container restart.
+# Repository now a hard fork
+This repository has been disconnected from [upstream] repository eversince GitHub introduced the "Leave fork network" button.  
+The real reason for the fork was because I wanted to clean up the mess in bash scripts and to reduce the maintenance burden while adding new stuff to the scripts and Docker environment itself, and also introducing the ability to autostart the gameserver when Host system boots up the Docker container.
 
 [docker-compose.yml]: ./docker-compose.yml
 [giants-eshop]: https://www.farming-simulator.com/buy-now.php?platform=pcdigital
+[upstream]: https://github.com/wine-gameservers/arch-wine-fs22
