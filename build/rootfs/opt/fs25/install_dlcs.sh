@@ -43,6 +43,7 @@ declare -A dlc_installer_patterns=(
   ["macDonPack"]="FarmingSimulator25_macDonPack_*.exe"
   ["nexatPack"]="FarmingSimulator25_nexatPack_*.exe"
   ["plainsAndPrairiesPack"]="FarmingSimulator25_plainsAndPrairiesPack_*.exe"
+  ["daimlerTruckPack"]="FarmingSimulator25_daimlerTruckPack_*.exe"
 )
 
 # Map of DLCs and their installers
@@ -50,6 +51,7 @@ declare -A dlcs=(
   ["MacDon Pack"]="macDonPack"
   ["Nexat Pack"]="nexatPack"
   ["Plains & Prairies Pack"]="plainsAndPrairiesPack"
+  ["Mercedes-Benz Trucks Pack"]="daimlerTruckPack"
 )
 
 # Install DLC
@@ -62,7 +64,7 @@ install_dlc() {
   else
     if ls $DLC_PATH/${exe_pattern} 1> /dev/null 2>&1; then
       echo -e "${GREEN}INFO: Installing ${dlc_name}!${NOCOLOR}"
-      for i in $DLC_PATH/${exe_pattern}; do wine "$i" "/SILENT" "/NOCANCEL" "/NOICONS"; done
+      for i in $DLC_PATH/${exe_pattern}; do wine "$i" "/SILENT" "/NOCANCEL"; done
       if [ -f "$FARMSIM_DLCS" ]; then
         echo -e "${GREEN}INFO: ${dlc_name} is now installed!${NOCOLOR}"
       fi
