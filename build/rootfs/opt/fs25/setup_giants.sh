@@ -52,7 +52,7 @@ fi
 if [ -f "$FARMSIM_EXECUTABLE" ]; then
   echo -e "${GREEN}INFO: Game already installed, we can skip the installer!${NOCOLOR}"
 else
-  wine "$INSTALLER_PATH"
+  wine "$INSTALLER_PATH" "/SILENT" "/NOCANCEL"
 fi
 
 # Cleanup Desktop

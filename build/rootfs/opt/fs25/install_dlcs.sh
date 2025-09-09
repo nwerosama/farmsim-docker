@@ -62,7 +62,7 @@ install_dlc() {
   else
     if ls $DLC_PATH/${exe_pattern} 1> /dev/null 2>&1; then
       echo -e "${GREEN}INFO: Installing ${dlc_name}!${NOCOLOR}"
-      for i in $DLC_PATH/${exe_pattern}; do wine "$i"; done
+      for i in $DLC_PATH/${exe_pattern}; do wine "$i" "/SILENT" "/NOCANCEL" "/NOICONS"; done
       if [ -f "$FARMSIM_DLCS" ]; then
         echo -e "${GREEN}INFO: ${dlc_name} is now installed!${NOCOLOR}"
       fi
