@@ -42,6 +42,7 @@ check_dlc_installer() {
 declare -A dlc_installer_patterns=(
   ["macDonPack"]="FarmingSimulator25_macDonPack_*.exe"
   ["nexatPack"]="FarmingSimulator25_nexatPack_*.exe"
+  ["strawHarvestPack"]="FarmingSimulator25_strawHarvestPack_*.exe"
   ["plainsAndPrairiesPack"]="FarmingSimulator25_plainsAndPrairiesPack_*.exe"
   ["daimlerTruckPack"]="FarmingSimulator25_daimlerTruckPack_*.exe"
 )
@@ -50,6 +51,7 @@ declare -A dlc_installer_patterns=(
 declare -A dlcs=(
   ["MacDon Pack"]="macDonPack"
   ["Nexat Pack"]="nexatPack"
+  ["Straw Harvest Pack"]="strawHarvestPack"
   ["Plains & Prairies Pack"]="plainsAndPrairiesPack"
   ["Mercedes-Benz Trucks Pack"]="daimlerTruckPack"
 )
