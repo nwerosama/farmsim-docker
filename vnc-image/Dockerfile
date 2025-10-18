@@ -1,4 +1,4 @@
-FROM archlinux:base@sha256:fc6a7997e569e600cac7b69ccc322515b72fddbdb388e978faa3c0f12bd13dae
+FROM archlinux:base@sha256:0423e31111e93087aef7a46f999a91e892a8d1b49e9de939e3e660e34ce42fe8
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 # add supervisor conf file
