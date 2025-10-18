@@ -12,7 +12,7 @@ GREEN='\033[0;32m'
 NOCOLOR='\033[0;0m'
 
 # Boot the wine prefix
-wine wineboot
+wineboot
 
 # Define the game installation directories on both the host and wine side
 FARMSIM_INSTALL_WINE="$WINEPREFIX/drive_c/Program Files (x86)/Farming Simulator 2025"

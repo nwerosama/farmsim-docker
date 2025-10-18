@@ -80,9 +80,6 @@ for theme in $(ls /usr/share/icewm/themes | grep -v win95); do
   rm -rf /usr/share/icewm/themes/$theme
 done
 
-# container perms
-####
-
 # define comma separated list of paths
 install_paths="/home/nobody"
 

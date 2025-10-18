@@ -6,8 +6,6 @@ set -e
 # we use escaping to prevent variable expansion for PUID and PGID, as we want these expanded at runtime of init.sh
 
 # env vars
-####
-
 cat <<'EOF' > /tmp/envvars_heredoc
 
 # Webserver

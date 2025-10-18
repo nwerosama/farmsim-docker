@@ -8,11 +8,12 @@ export USER=nobody
 
 # Debug error/reset color
 RED='\033[0;31m'
+BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 NOCOLOR='\033[0;0m'
 
 # Boot the wine prefix
-wine wineboot
+wineboot
 
 # Define the game installation directories on both the host and wine side
 FARMSIM_INSTALL_WINE="$WINEPREFIX/drive_c/Program Files (x86)/Farming Simulator 2025"
@@ -47,6 +48,7 @@ fi
 
 # Check if the server software exists on the WINE side
 if [ -f "$FARMSIM_DEDI_SOFTWARE" ]; then
+  echo -e "${BLUE}DEBUG: Webinterface port currently listens to ${WEB_PORT}${NOCOLOR}"
   wine "$FARMSIM_DEDI_SOFTWARE"
 else
   echo -e "${RED}Error: Dediserver software does not exist on the WINE side, unable to start the server!${NOCOLOR}"
