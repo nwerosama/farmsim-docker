@@ -20,6 +20,17 @@ if [ -n "$WEB_PASSWORD" ]; then
   sed -i "s/<passphrase>password<\/passphrase>/<passphrase>$WEB_PASSWORD<\/passphrase>/" /opt/fs25/xml/default_dedicatedServer.xml
 fi
 
+if [ -n "$WEB_PORT" ]; then
+  sed -i "s/<webserver port=\"8080\">/<webserver port=\"${WEB_PORT}\">/" /opt/fs25/xml/default_dedicatedServer.xml
+fi
+
+if [ -n "$GAME_PORT" ]; then
+  sed -i "s/<port>10823<\/port>/<port>$GAME_PORT<\/port>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
+fi
+
+sed -i "s|<admin_password>.*</admin_password>|<admin_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+
 EOF
 
 # replace env vars placeholder string with contents of file (here doc)

@@ -9,8 +9,11 @@ RUN chmod +x /opt/fs25/*.sh
 # Install script
 RUN chmod +x /root/install.sh && /bin/bash /root/install.sh
 
+ENV WEB_PORT=8080
+ENV GAME_PORT=10823
+
 # Expose port for webinterface
-EXPOSE 8080/tcp
+EXPOSE ${WEB_PORT}/tcp
 # Expose ports for the game
-EXPOSE 10823/udp
-EXPOSE 10823/tcp
+EXPOSE ${GAME_PORT}/udp
+EXPOSE ${GAME_PORT}/tcp
