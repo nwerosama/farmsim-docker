@@ -4,6 +4,7 @@ services:
     container_name: fs25-server
     restart: unless-stopped
     environment:
+      - VNC_PORT=5900
       - VNC_PASSWORD=vnc_pw
       - PUID=1000
       - PGID=1000

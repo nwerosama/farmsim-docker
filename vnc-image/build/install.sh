@@ -46,7 +46,9 @@ DEPENDENCIES=(
 PACKAGE_LIST="${DEPENDENCIES[*]}"
 
 echo "[info] Installing packages currently not installed..."
-pacman -Syu ${PACKAGE_LIST} --noconfirm
+pacman -Syu ${PACKAGE_LIST} --noconfirm && \
+pacman -Rns $(pacman -Qdtq) --noconfirm && \
+pacman -Scc --noconfirm
 
 # Install specific version of wine-staging to try fix networking issues
 WINE_PKG=wine-staging-10.15-2-x86_64.pkg.tar.zst

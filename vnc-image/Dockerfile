@@ -8,10 +8,13 @@ ADD build/rootfs /
 # add install bash script
 ADD build/install.sh /root/install.sh
 
-# set environment variables for language
+# set environment variable for language
 ENV LANG=en_US.UTF-8
 
 # install script
-RUN chmod +x /root/install.sh && chmod +x /usr/local/bin/xvfb.sh && /bin/bash /root/install.sh
+RUN chmod +x /root/install.sh && /bin/bash /root/install.sh
+
+# set port for vnc server to listen on
+ENV VNC_PORT=5900
 
 CMD ["/bin/bash", "/usr/local/bin/init.sh"]
