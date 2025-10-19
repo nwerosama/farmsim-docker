@@ -17,7 +17,6 @@ echo "[info] content of arch mirrorlist file"
 cat '/etc/pacman.d/mirrorlist'
 
 # Add multilib repository to run 32-bit applications on 64-bit installs
-
 echo -e " \n\
 [multilib] \n\
 Include = /etc/pacman.d/mirrorlist \n\
@@ -26,8 +25,7 @@ Include = /etc/pacman.d/mirrorlist \n\
 echo "[info] Fixing filesystem permissions..."
 chmod 755 /etc /usr
 
-# initialise key for pacman
-
+# Initialise key for pacman
 pacman-key --init
 
 DEPENDENCIES=(
@@ -42,29 +40,37 @@ DEPENDENCIES=(
   # Essentials
   supervisor
   moreutils
+  net-tools
   ttf-dejavu
-  wine-staging
 )
 PACKAGE_LIST="${DEPENDENCIES[*]}"
 
 echo "[info] Installing packages currently not installed..."
-pacman -Syu ${PACKAGE_LIST} --noconfirm && \
-pacman -Rns $(pacman -Qdtq) --noconfirm && \
-pacman -Scc --noconfirm
+pacman -Syu ${PACKAGE_LIST} --noconfirm
+
+# Install specific version of wine-staging to try fix networking issues
+WINE_PKG=wine-staging-10.15-2-x86_64.pkg.tar.zst
+curl -sSLO https://archive.archlinux.org/packages/w/wine-staging/${WINE_PKG} && pacman -U --noconfirm ${WINE_PKG}
+
+# Prevent pacman from updating it
+echo -e " \n\
+[options] \n\
+IgnorePkg = wine-staging \n\
+" >> /etc/pacman.conf
 
 # add user "nobody" to primary group "users" (will remove any other group membership)
-usermod -g users nobody && \
+usermod -g users nobody
 
 # add user "nobody" to secondary group "nobody" (will retain primary membership)
-usermod -aG nobody nobody && \
+usermod -aG nobody nobody
 
 # setup env for user nobody
-mkdir -p /home/nobody/Templates && \
-chown -R nobody:users /home/nobody && \
-chmod -R 775 /home/nobody && \
+mkdir -p /home/nobody/Templates
+chown -R nobody:users /home/nobody
+chmod -R 775 /home/nobody
 
 # set user "nobody" home directory (needs defining for pycharm, and possibly other apps)
-usermod -d /home/nobody nobody && \
+usermod -d /home/nobody nobody
 
 # set shell for user nobody
 chsh -s /bin/bash nobody
