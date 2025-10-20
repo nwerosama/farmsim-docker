@@ -26,6 +26,10 @@ if [ -n "$GAME_PORT" ]; then
   sed -i "s/<port>10823<\/port>/<port>$GAME_PORT<\/port>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
 fi
 
+if [ -n "$GAME_NAME" ]; then
+  sed -i "s/<game_name>.*<\/game_name>/<game_name>$GAME_NAME<\/game_name>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
+fi
+
 sed -i "s|<admin_password>.*</admin_password>|<admin_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
 sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
 
