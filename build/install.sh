@@ -30,8 +30,17 @@ if [ -n "$GAME_NAME" ]; then
   sed -i "s/<game_name>.*<\/game_name>/<game_name>$GAME_NAME<\/game_name>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
 fi
 
-sed -i "s|<admin_password>.*</admin_password>|<admin_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
-sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+if [ -n "$GAME_PASSWORD" ]; then
+  sed -i "s|<game_password>.*</game_password>|<game_password>$GAME_PASSWORD</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+else
+  sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+fi
+
+if [ -n "$GAME_PASSWORD_ADMIN" ]; then
+  sed -i "s|<admin_password>.*</admin_password>|<admin_password>$GAME_PASSWORD_ADMIN</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+else
+  sed -i "s|<admin_password>.*</admin_password>|<admin_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+fi
 
 EOF
 

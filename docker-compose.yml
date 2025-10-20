@@ -13,6 +13,8 @@ services:
       - WEB_PORT=8080
       - GAME_PORT=10823
       - GAME_NAME=Dedi Server
+      - GAME_PASSWORD=game_pw   # If set, it will use it else generates a random one instead.
+      - GAME_PASSWORD_ADMIN=admin_pw
       - AUTOSTART_ENABLED=false # Required else your container will immediately exit.
                                 # You can set it to true if you like Supervisor to
                                 # launch the webui and game when container starts
