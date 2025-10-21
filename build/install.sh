@@ -30,7 +30,7 @@ if [ -n "$GAME_NAME" ]; then
   sed -i "s/<game_name>.*<\/game_name>/<game_name>$GAME_NAME<\/game_name>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
 fi
 
-if [ -n "$GAME_PASSWORD" ]; then
+if [ -n "${GAME_PASSWORD+x}" ]; then
   sed -i "s|<game_password>.*</game_password>|<game_password>$GAME_PASSWORD</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
 else
   sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
