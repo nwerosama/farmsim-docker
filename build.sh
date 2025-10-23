@@ -6,6 +6,6 @@ REGISTRY_TAG=$(git rev-parse --abbrev-ref HEAD)
 echo "Building on $REGISTRY_TAG branch..."
 docker build -t $REGISTRY_URL:$REGISTRY_TAG .
 
-if [ "$REGISTRY_TAG" = "fs25" ]; then
+if [ "$REGISTRY_TAG" = "fs25" ] || [ "$REGISTRY_TAG" = "fs22" ]; then
   docker push $REGISTRY_URL:$REGISTRY_TAG
 fi

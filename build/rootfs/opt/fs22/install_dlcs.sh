@@ -8,11 +8,11 @@ export USER=nobody
 
 # Variable to make things easier
 FARMSIM_DOCS_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
-FARMSIM_DOCS="$FARMSIM_DOCS_PARENT/FarmingSimulator2025"
+FARMSIM_DOCS="$FARMSIM_DOCS_PARENT/FarmingSimulator2022"
 FARMSIM_DLCS="$FARMSIM_DOCS/pdlc/${dlc_name}.dlc"
 
 # Paths on filesystem
-DLC_PATH="/opt/fs25/dlc"
+DLC_PATH="/opt/fs22/dlc"
 
 # Debug info/warning/error color
 NOCOLOR='\033[0;0m'
@@ -40,20 +40,38 @@ check_dlc_installer() {
 
 # Map of DLC names and their installers
 declare -A dlc_installer_patterns=(
-  ["macDonPack"]="FarmingSimulator25_macDonPack_*.exe"
-  ["nexatPack"]="FarmingSimulator25_nexatPack_*.exe"
-  ["strawHarvestPack"]="FarmingSimulator25_strawHarvestPack_*.exe"
-  ["plainsAndPrairiesPack"]="FarmingSimulator25_plainsAndPrairiesPack_*.exe"
-  ["daimlerTruckPack"]="FarmingSimulator25_daimlerTruckPack_*.exe"
+  ["antonioCarraroPack"]="FarmingSimulator22_antonioCarraroPack_*.exe"
+  ["agiPack"]="FarmingSimulator22_agiPack_*.exe"
+  ["claasSaddleTracPack"]="FarmingSimulator22_claasSaddleTracPack_*.exe"
+  ["eroPack"]="FarmingSimulator22_eroPack_*.exe"
+  ["forestryPack"]="FarmingSimulator22_forestryPack_*.exe"
+  ["goeweilPack"]="FarmingSimulator22_goeweilPack_*.exe"
+  ["hayAndForagePack"]="FarmingSimulator22_hayAndForagePack_*.exe"
+  ["kubotaPack"]="FarmingSimulator22_kubotaPack_*.exe"
+  ["vermeerPack"]="FarmingSimulator22_vermeerPack_*.exe"
+  ["pumpsAndHosesPack"]="FarmingSimulator22_pumpsAndHosesPack_*.exe"
+  ["horschAgrovation"]="FarmingSimulator22_horschAgrovation_*.exe"
+  ["oxboPack"]="FarmingSimulator22_oxboPack_*.exe"
+  ["premiumExpansion"]="FarmingSimulator22_premiumExpansion_*.exe"
+  ["farmProductionPack"]="FarmingSimulator22_farmProductionPack_*.exe"
 )
 
 # Map of DLCs and their installers
 declare -A dlcs=(
-  ["MacDon Pack"]="macDonPack"
-  ["Nexat Pack"]="nexatPack"
-  ["Straw Harvest Pack"]="strawHarvestPack"
-  ["Plains & Prairies Pack"]="plainsAndPrairiesPack"
-  ["Mercedes-Benz Trucks Pack"]="daimlerTruckPack"
+  ["Antonio Carraro"]="antonioCarraroPack"
+  ["AGI Pack"]="agiPack"
+  ["CLAAS XERION SADDLE TRAC"]="claasSaddleTracPack"
+  ["Ero Pack"]="eroPack"
+  ["Forestry Pack"]="forestryPack"
+  ["Goeweil Pack"]="goeweilPack"
+  ["Hay And Forage Pack"]="hayAndForagePack"
+  ["Kubota Pack"]="kubotaPack"
+  ["Vermeer Pack"]="vermeerPack"
+  ["Pumps And Hoses Pack"]="pumpsAndHosesPack"
+  ["Horsch AgroVation"]="horschAgrovation"
+  ["OXBO Pack"]="oxboPack"
+  ["Premium Expansion"]="premiumExpansion"
+  ["Farm Production Pack"]="farmProductionPack"
 )
 
 # Install DLC

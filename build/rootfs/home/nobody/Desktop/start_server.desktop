@@ -3,6 +3,6 @@ Encoding=UTF-8
 Name=​
 Comment=Run Webserver
 Icon=/home/nobody/icons/start.png
-Exec=/opt/fs25/start_webserver.sh
+Exec=/opt/fs22/start_webserver.sh
 Terminal=false
 Type=Application

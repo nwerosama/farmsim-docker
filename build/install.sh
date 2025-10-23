@@ -11,35 +11,35 @@ cat <<'EOF' > /tmp/envvars_heredoc
 # Webserver
 
 if [ -n "$WEB_USERNAME" ]; then
-  sed -i "s/<username>admin<\/username>/<username>$WEB_USERNAME<\/username>/" /opt/fs25/xml/default_dedicatedServer.xml
+  sed -i "s/<username>admin<\/username>/<username>$WEB_USERNAME<\/username>/" /opt/fs22/xml/default_dedicatedServer.xml
 fi
 
 if [ -n "$WEB_PASSWORD" ]; then
-  sed -i "s/<passphrase>password<\/passphrase>/<passphrase>$WEB_PASSWORD<\/passphrase>/" /opt/fs25/xml/default_dedicatedServer.xml
+  sed -i "s/<passphrase>password<\/passphrase>/<passphrase>$WEB_PASSWORD<\/passphrase>/" /opt/fs22/xml/default_dedicatedServer.xml
 fi
 
 if [ -n "$WEB_PORT" ]; then
-  sed -i "s/<webserver port=\"8080\">/<webserver port=\"${WEB_PORT}\">/" /opt/fs25/xml/default_dedicatedServer.xml
+  sed -i "s/<webserver port=\"8080\">/<webserver port=\"${WEB_PORT}\">/" /opt/fs22/xml/default_dedicatedServer.xml
 fi
 
 if [ -n "$GAME_PORT" ]; then
-  sed -i "s/<port>10823<\/port>/<port>$GAME_PORT<\/port>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
+  sed -i "s/<port>10823<\/port>/<port>$GAME_PORT<\/port>/" /opt/fs22/xml/default_dedicatedServerConfig.xml
 fi
 
 if [ -n "$GAME_NAME" ]; then
-  sed -i "s/<game_name>.*<\/game_name>/<game_name>$GAME_NAME<\/game_name>/" /opt/fs25/xml/default_dedicatedServerConfig.xml
+  sed -i "s/<game_name>.*<\/game_name>/<game_name>$GAME_NAME<\/game_name>/" /opt/fs22/xml/default_dedicatedServerConfig.xml
 fi
 
 if [ -z "${GAME_PASSWORD+x}" ] || [ "$GAME_PASSWORD" = "" ]; then
-  sed -i "s|<game_password>.*</game_password>|<game_password>$GAME_PASSWORD</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+  sed -i "s|<game_password>.*</game_password>|<game_password>$GAME_PASSWORD</game_password>|" /opt/fs22/xml/default_dedicatedServerConfig.xml
 else
-  sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+  sed -i "s|<game_password>.*</game_password>|<game_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</game_password>|" /opt/fs22/xml/default_dedicatedServerConfig.xml
 fi
 
 if [ -n "$GAME_PASSWORD_ADMIN" ]; then
-  sed -i "s|<admin_password>.*</admin_password>|<admin_password>$GAME_PASSWORD_ADMIN</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+  sed -i "s|<admin_password>.*</admin_password>|<admin_password>$GAME_PASSWORD_ADMIN</admin_password>|" /opt/fs22/xml/default_dedicatedServerConfig.xml
 else
-  sed -i "s|<admin_password>.*</admin_password>|<admin_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</admin_password>|" /opt/fs25/xml/default_dedicatedServerConfig.xml
+  sed -i "s|<admin_password>.*</admin_password>|<admin_password>$(tr -dc 'A-Z' < /dev/urandom | head -c8)</admin_password>|" /opt/fs22/xml/default_dedicatedServerConfig.xml
 fi
 
 EOF
@@ -53,6 +53,6 @@ sed -i '/# ENVVARS_PLACEHOLDER/{
 rm /tmp/envvars_heredoc
 
 # Symlinks
-ln -s /opt/fs25/setup_giants.sh /home/nobody/setup_giants.sh
-ln -s /opt/fs25/start_webserver.sh /home/nobody/start_webserver.sh
-ln -s /opt/fs25/start_gameserver.sh /home/nobody/start_gameserver.sh
+ln -s /opt/fs22/setup_giants.sh /home/nobody/setup_giants.sh
+ln -s /opt/fs22/start_webserver.sh /home/nobody/start_webserver.sh
+ln -s /opt/fs22/start_gameserver.sh /home/nobody/start_gameserver.sh

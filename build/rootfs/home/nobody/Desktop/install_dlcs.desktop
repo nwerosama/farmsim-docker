@@ -3,6 +3,6 @@ Encoding=UTF-8
 Name=​
 Comment=Recursively install DLCs
 Icon=/home/nobody/icons/dlcs.png
-Exec=/opt/fs25/install_dlcs.sh
+Exec=/opt/fs22/install_dlcs.sh
 Terminal=false
 Type=Application

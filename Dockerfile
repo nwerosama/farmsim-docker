@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-dock
 COPY build/rootfs /
 COPY build/install.sh /root/install.sh
 RUN chown -R nobody:nobody /home/nobody
-RUN chmod +x /opt/fs25/*.sh
+RUN chmod +x /opt/fs22/*.sh
 
 # Install script
 RUN chmod +x /root/install.sh && /bin/bash /root/install.sh

@@ -8,11 +8,9 @@
         <max_player>16</max_player>
         <port>10823</port>
         <language>en</language>
-        <auto_save_interval>180.000000</auto_save_interval>
+        <auto_save_interval>60.000000</auto_save_interval>
         <stats_interval>45.000000</stats_interval>
         <crossplay_allowed>true</crossplay_allowed>
-        <initialMoney>500000</initialMoney>
-        <initialLoan>0</initialLoan>
         <economicDifficulty>2</economicDifficulty>
         <pause_game_if_empty>2</pause_game_if_empty>
         <mapID>MapUS</mapID>

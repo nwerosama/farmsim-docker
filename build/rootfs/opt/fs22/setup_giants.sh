@@ -8,14 +8,14 @@ export USER=nobody
 
 # Variable to make things easier
 FARMSIM_DOCS_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
-FARMSIM_DOCS="$FARMSIM_DOCS_PARENT/FarmingSimulator2025"
-FARMSIM_INSTALL="$WINEPREFIX/drive_c/Program Files (x86)/Farming Simulator 2025"
-FARMSIM_EXECUTABLE="$FARMSIM_INSTALL/FarmingSimulator2025.exe"
+FARMSIM_DOCS="$FARMSIM_DOCS_PARENT/FarmingSimulator2022"
+FARMSIM_INSTALL="$WINEPREFIX/drive_c/Program Files (x86)/Farming Simulator 2022"
+FARMSIM_EXECUTABLE="$FARMSIM_INSTALL/FarmingSimulator2022.exe"
 
 # Paths on filesystem
-DOCS_PATH="/opt/fs25/docs"
-DLC_PATH="/opt/fs25/dlc"
-INSTALLER_PATH="/opt/fs25/install/FarmingSimulator2025.exe"
+DOCS_PATH="/opt/fs22/docs"
+DLC_PATH="/opt/fs22/dlc"
+INSTALLER_PATH="/opt/fs22/install/FarmingSimulator2022.exe"
 DESKTOP_ICONS="~/Desktop/*.{lnk}"
 
 # Debug info/warning/error color
