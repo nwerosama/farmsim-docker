@@ -85,4 +85,4 @@ else
 fi
 
 echo -e "${YELLOW}INFO: Checking for updates, if you get warning about 'Shader Model 6.0', ignore it${NOCOLOR}"
-wine "$FARMSIM_EXECUTABLE"
+wine "$FARMSIM_EXECUTABLE" "-updateAll"
