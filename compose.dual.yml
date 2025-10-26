@@ -18,6 +18,7 @@ x-env: &env
 services:
   server1:
     <<: *common
+    container_name: server1
     environment:
       <<: *env
       VNC_PORT: 5900
@@ -37,20 +38,21 @@ services:
       - 10823:10823/tcp
   server2:
     <<: *common
+    container_name: server2
     environment:
       <<: *env
-      VNC_PORT: 5901 # idk why its not setting it but oh well
+      VNC_PORT: 5901
       WEB_PORT: 8081
       GAME_PORT: 10824
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - './fs25/game2:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
+      - './fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
       - ./fs25/dlc:/opt/fs25/dlc
       - ./fs25/profile/server2:/opt/fs25/docs
       - ./fs25/install:/opt/fs25/install
       - './fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter'
     ports:
-      - 5901:5900/tcp
+      - 5901:5901/tcp
       - 8081:8081/tcp
       - 10824:10824/udp
       - 10824:10824/tcp
