@@ -20,8 +20,14 @@ FARMSIM_INSTALL_WINE="$WINEPREFIX/drive_c/Program Files (x86)/Farming Simulator 
 FARMSIM_DOCS_HOST="/opt/fs25/docs"
 FARMSIM_DOCS_WINE_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
 FARMSIM_DOCS_WINE="$FARMSIM_DOCS_WINE_PARENT/FarmingSimulator2025"
+FARMSIM_DOCS_DEDI_CONF="$FARMSIM_DOCS_WINE/dedicated_server/dedicatedServerConfig.xml"
 FARMSIM_DEDI_SOFTWARE="$FARMSIM_INSTALL_WINE/dedicatedServer.exe"
 FARMSIM_DEDI_XML="/opt/fs25/xml"
+
+# Container filesystem
+LOCAL_DEDI_SOFTWARE_DIR="$FARMSIM_DOCS_WINE/dedicated_server"
+LOCAL_DEDI_SOFTWARE="$LOCAL_DEDI_SOFTWARE_DIR/dedicatedServer.exe"
+LOCAL_DEDI_SOFTWARE_CONF="$LOCAL_DEDI_SOFTWARE_DIR/dedicatedServer.xml"
 
 # Symlink the game profile directory
 if [ -d "$FARMSIM_DOCS_WINE" ]; then
@@ -30,26 +36,38 @@ else
   mkdir -p "$FARMSIM_DOCS_WINE_PARENT" && ln -s "$FARMSIM_DOCS_HOST" "$FARMSIM_DOCS_WINE"
 fi
 
-# Copy webserver config..
-if [ ! -f "$FARMSIM_INSTALL_WINE/dedicatedServer.xml" ]; then
+# Copy dedicatedServer executable
+if [ ! -f "$LOCAL_DEDI_SOFTWARE" ]; then
+  cp "$FARMSIM_DEDI_SOFTWARE" "$LOCAL_DEDI_SOFTWARE"
+fi
+
+# Copy the web_data directory
+if [ ! -d "$LOCAL_DEDI_SOFTWARE_DIR/web_data" ]; then
+  echo -e "${GREEN}INFO: Copying the web_data from game files to profile's dedicated_server directory${NOCOLOR}"
+  mkdir -p "$LOCAL_DEDI_SOFTWARE_DIR"
+  cp -R "$FARMSIM_INSTALL_WINE/web_data" "$LOCAL_DEDI_SOFTWARE_DIR"
+fi
+
+# Copy webserver config
+if [ ! -f "$LOCAL_DEDI_SOFTWARE_CONF" ]; then
   echo -e "${GREEN}INFO: Copying the webserver config!${NOCOLOR}"
-  cp "$FARMSIM_DEDI_XML/default_dedicatedServer.xml" "$FARMSIM_INSTALL_WINE/dedicatedServer.xml"
+  cp "$FARMSIM_DEDI_XML/default_dedicatedServer.xml" "$LOCAL_DEDI_SOFTWARE_CONF"
 else
   echo -e "${GREEN}INFO: Webserver config already exists! Skipping..${NOCOLOR}"
 fi
 
 # Copy server config
-if [ ! -f "$FARMSIM_DOCS_WINE/dedicated_server/dedicatedServerConfig.xml" ]; then
+if [ ! -f "$FARMSIM_DOCS_DEDI_CONF" ]; then
   echo -e "${GREEN}INFO: Copying the server config!${NOCOLOR}"
-  cp "$FARMSIM_DEDI_XML/default_dedicatedServerConfig.xml" "$FARMSIM_DOCS_WINE/dedicated_server/dedicatedServerConfig.xml"
+  cp "$FARMSIM_DEDI_XML/default_dedicatedServerConfig.xml" "$FARMSIM_DOCS_DEDI_CONF"
 else
   echo -e "${GREEN}INFO: Server config already exists! Skipping..${NOCOLOR}"
 fi
 
 # Check if the server software exists on the WINE side
-if [ -f "$FARMSIM_DEDI_SOFTWARE" ]; then
+if [ -f "$LOCAL_DEDI_SOFTWARE" ]; then
   echo -e "${BLUE}DEBUG: Webinterface port currently listens to ${WEB_PORT}${NOCOLOR}"
-  wine "$FARMSIM_DEDI_SOFTWARE"
+  wine "$LOCAL_DEDI_SOFTWARE"
 else
   echo -e "${RED}Error: Dediserver software does not exist on the WINE side, unable to start the server!${NOCOLOR}"
   exit 1
