@@ -26,7 +26,7 @@ RED='\033[0;31m'
 
 # Create a clean 64bit Wineprefix
 if [ -d ~/.fs_server ]; then
-  wine wineboot
+  wineboot
 fi
 
 # it's important to check if the config directory exists on the host mount path. If it doesn't exist, create it.
@@ -85,4 +85,4 @@ else
 fi
 
 echo -e "${YELLOW}INFO: Checking for updates, if you get warning about 'Shader Model 6.0', ignore it${NOCOLOR}"
-wine "$FARMSIM_EXECUTABLE" "-updateAll"
+wine "$FARMSIM_EXECUTABLE"
