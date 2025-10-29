@@ -26,7 +26,7 @@ RED='\033[0;31m'
 
 # Create a clean 64bit Wineprefix
 if [ -d ~/.fs_server ]; then
-  wine wineboot
+  wineboot
 fi
 
 # it's important to check if the config directory exists on the host mount path. If it doesn't exist, create it.

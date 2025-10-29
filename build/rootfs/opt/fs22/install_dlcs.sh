@@ -6,7 +6,7 @@ export WINEPREFIX=~/.fs_server
 export WINEARCH=win64
 export USER=nobody
 
-# Variable to make things easier
+# Variables to make things easier
 FARMSIM_DOCS_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
 FARMSIM_DOCS="$FARMSIM_DOCS_PARENT/FarmingSimulator2022"
 FARMSIM_DLCS="$FARMSIM_DOCS/pdlc/${dlc_name}.dlc"
@@ -22,7 +22,7 @@ RED='\033[0;31m'
 
 # Create a clean 64bit Wineprefix
 if [ -d ~/.fs_server ]; then
-  wine wineboot
+  wineboot
 fi
 
 # Check if DLC installers exists in host directory
