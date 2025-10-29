@@ -42,6 +42,7 @@ DEPENDENCIES=(
   moreutils
   net-tools
   ttf-dejavu
+  vim
 )
 PACKAGE_LIST="${DEPENDENCIES[*]}"
 
