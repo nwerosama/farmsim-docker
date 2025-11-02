@@ -1,0 +1,30 @@
+services:
+  gameserver:
+    image: ghcr.io/nwerosama/farmsim-docker:novnc
+    container_name: fs25-server
+    restart: unless-stopped
+    environment:
+      - GAME_VERSION=25 # Switch to 22 if you're hosting the FS22 server, but you will have to update the volume mounts
+      - WEB_USERNAME=admin
+      - WEB_PASSWORD=admin_pw
+      - GAME_PORT=10823
+      - GAME_NAME=Dedi Server
+      - GAME_PASSWORD=game_pw   # If set, it will use it else generates a random one instead.
+      - GAME_PASSWORD_ADMIN=admin_pw
+      - AUTOSTART_ENABLED=false # Required else your container will immediately exit.
+                                # You can set it to true if you like Supervisor to
+                                # launch the webui and game when container starts
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /opt/fs25/docs:/opt/fs25/docs
+      - '/opt/fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
+      - /opt/fs25/dlc:/opt/fs25/dlc
+      - /opt/fs25/install:/opt/fs25/install
+      - '/opt/fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter' # FS22 doesn't have this tool, so it's optional
+    ports:
+      # host:container
+      - 8080:8080/tcp   # Webinterface
+      - 10823:10823/udp # Game (UDP)
+      - 10823:10823/tcp # Game <--> GIANTS (from what I'm told anyway)
+    cap_add:
+      - SYS_NICE

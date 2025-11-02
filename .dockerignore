@@ -1,0 +1,13 @@
+/build
+/vnc-image
+
+/fs22
+/fs25
+.github
+.gitignore
+*.sh
+*.yml
+compose.*.yml
+Dockerfile
+README.md
+LICENSE

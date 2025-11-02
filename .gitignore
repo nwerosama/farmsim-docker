@@ -1,0 +1,10 @@
+# Host directory for the game stuff
+/fs22
+/fs25
+
+/vnc-image
+
+# My copy of docker-compose so I don't have to accidentally commit the changes
+compose.farmsim.yml
+
+/*.txt

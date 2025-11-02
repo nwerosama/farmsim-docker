@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<gameserver>
+    <settings>
+        <game_name>Dedi Server</game_name>
+        <admin_password></admin_password>
+        <game_password></game_password>
+        <savegame_index>1</savegame_index>
+        <max_player>16</max_player>
+        <port>10823</port>
+        <language>en</language>
+        <auto_save_interval>60.000000</auto_save_interval>
+        <stats_interval>45.000000</stats_interval>
+        <crossplay_allowed>true</crossplay_allowed>
+        <economicDifficulty>2</economicDifficulty>
+        <pause_game_if_empty>2</pause_game_if_empty>
+        <mapID>MapUS</mapID>
+        <mapFilename>default</mapFilename>
+    </settings>
+</gameserver>

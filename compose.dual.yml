@@ -1,0 +1,47 @@
+x-common: &common
+  image: ghcr.io/nwerosama/farmsim-docker:novnc
+  restart: unless-stopped
+  cap_add:
+    - SYS_NICE
+
+x-env: &env
+  WEB_USERNAME: admin
+  WEB_PASSWORD: admin_pw
+  GAME_NAME: Docker Server
+  GAME_PASSWORD: null
+  GAME_PASSWORD_ADMIN: admin_pw
+  AUTOSTART_ENABLED: "true"
+
+services:
+  server1:
+    <<: *common
+    container_name: server1
+    environment:
+      <<: *env
+      GAME_PORT: 10823
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - './fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
+      - ./fs25/profile/server1:/opt/fs25/docs
+      - ./fs25/install:/opt/fs25/install
+      - './fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter'
+    ports:
+      - 8080:8080/tcp
+      - 10823:10823/udp
+      - 10823:10823/tcp
+  server2:
+    <<: *common
+    container_name: server2
+    environment:
+      <<: *env
+      GAME_PORT: 10824
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - './fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
+      - ./fs25/profile/server2:/opt/fs25/docs
+      - ./fs25/install:/opt/fs25/install
+      - './fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter'
+    ports:
+      - 8081:8080/tcp
+      - 10824:10824/udp
+      - 10824:10824/tcp
