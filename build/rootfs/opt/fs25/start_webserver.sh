@@ -23,14 +23,7 @@ FARMSIM_DOCS_WINE="$FARMSIM_DOCS_WINE_PARENT/FarmingSimulator2025"
 FARMSIM_DOCS_DEDI_CONF="$FARMSIM_DOCS_WINE/dedicated_server/dedicatedServerConfig.xml"
 FARMSIM_DEDI_SOFTWARE="$FARMSIM_INSTALL_WINE/dedicatedServer.exe"
 FARMSIM_DEDI_SOFTWARE_CONF="$FARMSIM_INSTALL_WINE/dedicatedServer.xml"
-FARMSIM_X64="$FARMSIM_INSTALL_WINE/x64"
 FARMSIM_DEDI_XML="/opt/fs25/xml"
-
-# Container filesystem
-LOCAL_DEDI_SOFTWARE_DIR="$FARMSIM_DOCS_WINE/dedicated_server"
-LOCAL_DEDI_SOFTWARE="$LOCAL_DEDI_SOFTWARE_DIR/dedicatedServer.exe"
-LOCAL_DEDI_SOFTWARE_CONF="$LOCAL_DEDI_SOFTWARE_DIR/dedicatedServer.xml"
-LOCAL_X64="$LOCAL_DEDI_SOFTWARE_DIR/x64"
 
 # Symlink the game profile directory
 if [ -d "$FARMSIM_DOCS_WINE" ]; then
@@ -38,25 +31,6 @@ if [ -d "$FARMSIM_DOCS_WINE" ]; then
 else
   mkdir -p "$FARMSIM_DOCS_WINE_PARENT" && ln -s "$FARMSIM_DOCS_HOST" "$FARMSIM_DOCS_WINE"
 fi
-
-# Symlink the game's executable directory
-# if [ -d "$LOCAL_X64" ]; then
-#   echo -e "${GREEN}INFO: The symlink is already in place for x64, no need to create one!${NOCOLOR}"
-# else
-#   ln -s "$FARMSIM_X64" "$LOCAL_X64"
-# fi
-
-# Copy dedicatedServer executable
-# if [ ! -f "$LOCAL_DEDI_SOFTWARE" ]; then
-#   cp "$FARMSIM_DEDI_SOFTWARE" "$LOCAL_DEDI_SOFTWARE"
-# fi
-
-# # Copy the web_data directory
-# if [ ! -d "$LOCAL_DEDI_SOFTWARE_DIR/web_data" ]; then
-#   echo -e "${GREEN}INFO: Copying the web_data from game files to profile's dedicated_server directory${NOCOLOR}"
-#   mkdir -p "$LOCAL_DEDI_SOFTWARE_DIR"
-#   cp -R "$FARMSIM_INSTALL_WINE/web_data" "$LOCAL_DEDI_SOFTWARE_DIR"
-# fi
 
 # Copy webserver config
 if [ ! -f "$FARMSIM_DEDI_SOFTWARE_CONF" ]; then
