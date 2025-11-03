@@ -20,7 +20,7 @@ FS25="25"
 # Game selection
 GAME_VERSION="${GAME_VERSION:-$FS25}"
 if [ "$GAME_VERSION" = "$FS22" ]; then
-  GAME_NAME="Farming Simulator 22"
+  GAME_NAME="Farming Simulator 2022"
   GAME_EXE="FarmingSimulator2022Game.exe"
 else
   GAME_NAME="Farming Simulator 2025"
