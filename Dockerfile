@@ -1,8 +1,8 @@
-FROM archlinux:multilib-devel@sha256:e6f380814330655127d3992645edea1f3eedbb64ebc104c1720cab5ba5b8edc3
+FROM archlinux:multilib-devel@sha256:9323d3b3c7820c46482b0bb6e923de50c6c57559c6b24da2fba20080e38ec756
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG WINE_ARCHIVE=https://archive.archlinux.org/packages/w/wine-staging
-ARG WINE_PKG=wine-staging-10.15-2-x86_64.pkg.tar.zst
+ARG WINE_PKG=wine-staging-11.0-1-x86_64.pkg.tar.zst
 
 COPY container /
 
