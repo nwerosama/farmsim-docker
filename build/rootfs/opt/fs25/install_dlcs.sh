@@ -46,6 +46,7 @@ declare -A dlc_installer_patterns=(
   ["plainsAndPrairiesPack"]="FarmingSimulator25_plainsAndPrairiesPack_*.exe"
   ["daimlerTruckPack"]="FarmingSimulator25_daimlerTruckPack_*.exe"
   ["highlandsFishingPack"]="FarmingSimulator25_highlandsFishingPack_*.exe"
+  ["vredoPack"]="FarmingSimulator25_vredoPack_*.exe"
 )
 
 # Map of DLCs and their installers
@@ -56,6 +57,7 @@ declare -A dlcs=(
   ["Plains & Prairies Pack"]="plainsAndPrairiesPack"
   ["Mercedes-Benz Trucks Pack"]="daimlerTruckPack"
   ["Highlands Fishing Expansion"]="highlandsFishingPack"
+  ["Vredo Pack"]="vredoPack"
 )
 
 # Install DLC
