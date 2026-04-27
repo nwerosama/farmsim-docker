@@ -2,9 +2,8 @@
 
 export WINEDLLOVERRIDES=mscoree=d
 export WINEDEBUG=-all
-export WINEPREFIX=~/.fs_server
+export WINEPREFIX=/home/nobody/.fs_server
 export WINEARCH=win64
-export USER=nobody
 
 # Debug error/reset color
 RED='\033[0;31m'

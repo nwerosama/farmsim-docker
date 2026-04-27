@@ -2,9 +2,8 @@
 
 export WINEDLLOVERRIDES=mscoree=d
 export WINEDEBUG=-all
-export WINEPREFIX=~/.fs_server
+export WINEPREFIX=/home/nobody/.fs_server
 export WINEARCH=win64
-export USER=nobody
 
 # Debug error/reset color
 RED='\033[0;31m'
@@ -45,6 +44,7 @@ FARMSIM_DEDI_XML="/home/$USER/xml/$XML_STORE"
 if [ -d "$FARMSIM_DOCS_WINE" ]; then
   echo -e "${GREEN}INFO: The symlink is already in place, no need to create one!${NOCOLOR}"
 else
+  echo -e "${BLUE}DEBUG: Executing mkdir and ln as $(whoami)${NOCOLOR}"
   mkdir -p "$FARMSIM_DOCS_WINE_PARENT" && ln -s "$FARMSIM_DOCS_HOST" "$FARMSIM_DOCS_WINE"
 fi
 

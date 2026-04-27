@@ -34,4 +34,6 @@ for DIR in "$XML_BASE_DIR"/*/; do
   fi
 done
 
+chown -R ${USERID}:${GROUPID} /home/nobody
+
 exec /root/supervisor.sh
