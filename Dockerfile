@@ -1,4 +1,4 @@
-FROM archlinux:multilib-devel@sha256:eb1f8b3bd95dcbdbe602bdc85f2166247b7f096b5a646a19aed205bec6771067
+FROM archlinux:base@sha256:5ba8bb318666baef4d33afefc0e65db80f38b23503cb8e7b150d315cc2d4d5da
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
@@ -10,6 +10,8 @@ ARG WINE_PKG=wine-staging-11.7-1-x86_64.pkg.tar.zst
 COPY container /
 
 RUN echo -e " \n\
+[multilib] \n\
+Include = /etc/pacman.d/mirrorlist \n\n\
 [options] \n\
 IgnorePkg = wine-staging \n\
 " >> /etc/pacman.conf
