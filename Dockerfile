@@ -1,4 +1,4 @@
-FROM archlinux:base@sha256:ceac417c19645d21630c120fa123942aa1fc5988faab14e67222013cb11f31bb
+FROM archlinux:base@sha256:1047e6e7878d58e4ee47e1cd6459a32fab41246b0efc4109e11b7ef16f50b14d
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
@@ -19,7 +19,7 @@ IgnorePkg = wine-staging \n\
 RUN chmod 755 /etc /usr
 
 # download dependencies
-RUN pacman-key --init && pacman -Sy --noconfirm supervisor xorg-server-xvfb
+RUN pacman-key --init && pacman -Sy --noconfirm supervisor xorg-server-xvfb nettle
 RUN --mount=type=cache,target=/root/.cache/winepkg mkdir -p /root/.cache/winepkg && cd /root/.cache/winepkg && curl -sSLO ${WINE_ARCHIVE}/${WINE_PKG} && pacman -U --noconfirm ${WINE_PKG} && pacman -Scc --noconfirm
 
 # setup user account
