@@ -30,8 +30,7 @@ mkdir -p /home/nobody && chown -R ${USERID}:${GROUPID} /home/nobody && chmod 755
 
 # cleanup
 RUN rm -rf /${WINE_PKG} /var/cache/pacman/{pkg,sync} /usr/share/{man,doc} /var/tmp/* /tmp/* /root/.cache /home/nobody/.cache
-RUN find /usr/lib -type f -name '*.a' -delete && find /usr/lib -type f -name '*.la' -delete && find /usr/share/applications -type f -delete
+RUN find /usr/lib -type f \( -name '*.a' -o -name '*.la' \) -delete && find /usr/share/applications -type f -delete
 
-RUN mv /supervisor.sh /init.sh /root && chmod +x /root/*.sh
-RUN chmod +x /home/nobody/*.sh
+RUN mv /supervisor.sh /init.sh /root && chmod +x /root/*.sh && chmod +x /home/nobody/*.sh
 ENTRYPOINT ["bash", "-c", "/root/init.sh"]
