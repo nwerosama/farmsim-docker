@@ -1,4 +1,6 @@
-# FarmSim Docker
+# FarmSim Docker - Proton
+This image behaves the same as `novnc` branch/tag, but it uses GE-Proton11 instead of Wine 11.  
+You should notice minimal-to-big performance improvement based on your test results and host hardware.
 
 ### Usage/Deployment
 
@@ -19,6 +21,13 @@ We will be using `/opt/fs25` as the default path.
    - You may need to append `sudo` in front if the user is not part of the Docker group.
 5. Anything you need to do inside container is via attaching to the container's shell and use `supervisorctl`.  
    However you will have to install/update the game/DLCs via the `:fs25`/`:fs22` image tags as there's no scripts for them.
+
+>[!IMPORTANT]
+When switching to `proton` tag, you need to add `pfx` to the container path, for example:
+```diff
+- '/opt/fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
++ '/opt/fs25/game:/home/nobody/.fs_server/pfx/drive_c/Program Files (x86)/Farming Simulator 2025' 
+```
 
 >[!IMPORTANT]
 You may need to delete the `dedicatedServer.xml` file that it generated on first launch and restart the panel.

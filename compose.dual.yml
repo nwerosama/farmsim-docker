@@ -1,5 +1,5 @@
 x-common: &common
-  image: ghcr.io/nwerosama/farmsim-docker:novnc
+  image: ghcr.io/nwerosama/farmsim-docker:proton
   restart: unless-stopped
   cap_add:
     - SYS_NICE
@@ -21,10 +21,10 @@ services:
       GAME_PORT: 10823
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - './fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
+      - './fs25/game:/home/nobody/.fs_server/pfx/drive_c/Program Files (x86)/Farming Simulator 2025'
       - ./fs25/profile/server1:/opt/fs25/docs
       - ./fs25/install:/opt/fs25/install
-      - './fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter'
+      - './fs25/crshdmp:/home/nobody/.fs_server/pfx/drive_c/users/steamuser/AppData/Local/GIANTS Crash Reporter'
     ports:
       - 8080:8080/tcp
       - 10823:10823/udp
@@ -37,10 +37,10 @@ services:
       GAME_PORT: 10824
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - './fs25/game:/home/nobody/.fs_server/drive_c/Program Files (x86)/Farming Simulator 2025'
+      - './fs25/game:/home/nobody/.fs_server/pfx/drive_c/Program Files (x86)/Farming Simulator 2025'
       - ./fs25/profile/server2:/opt/fs25/docs
       - ./fs25/install:/opt/fs25/install
-      - './fs25/crshdmp:/home/nobody/.fs_server/drive_c/users/nobody/AppData/Local/GIANTS Crash Reporter'
+      - './fs25/crshdmp:/home/nobody/.fs_server/pfx/drive_c/users/steamuser/AppData/Local/GIANTS Crash Reporter'
     ports:
       - 8081:8080/tcp
       - 10824:10824/udp

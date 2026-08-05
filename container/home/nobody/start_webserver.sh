@@ -1,18 +1,11 @@
 #!/bin/bash
-
-export WINEDLLOVERRIDES=mscoree=d
-export WINEDEBUG=-all
-export WINEPREFIX=/home/nobody/.fs_server
-export WINEARCH=win64
+source rt.sh
 
 # Debug error/reset color
 RED='\033[0;31m'
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 NOCOLOR='\033[0;0m'
-
-# Boot the wine prefix
-wineboot
 
 # Game name
 FS22="22"
@@ -31,9 +24,9 @@ else
 fi
 
 # Define the game installation directories on both the host and wine side
-FARMSIM_INSTALL_WINE="$WINEPREFIX/drive_c/Program Files (x86)/$GAME_NAME"
+FARMSIM_INSTALL_WINE="$STEAM_COMPAT_DATA_PATH/pfx/drive_c/Program Files (x86)/$GAME_NAME"
 FARMSIM_DOCS_HOST="/opt/fs${GAME_VERSION}/docs"
-FARMSIM_DOCS_WINE_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
+FARMSIM_DOCS_WINE_PARENT="$STEAM_COMPAT_DATA_PATH/pfx/drive_c/users/steamuser/Documents/My Games"
 FARMSIM_DOCS_WINE="$FARMSIM_DOCS_WINE_PARENT/$DOCS_DIR"
 FARMSIM_DOCS_DEDI_CONF="$FARMSIM_DOCS_WINE/dedicated_server/dedicatedServerConfig.xml"
 FARMSIM_DEDI_CONF="$FARMSIM_INSTALL_WINE/dedicatedServer.xml"
@@ -64,13 +57,13 @@ else
   echo -e "${GREEN}INFO: Server config already exists! Skipping..${NOCOLOR}"
 fi
 
-# Check if the server software exists on the WINE side
+# Check if the server software exists on Proton side
 if [ -f "$FARMSIM_DEDI_SOFTWARE" ]; then
   echo -e "${BLUE}DEBUG: Webinterface should be online in few seconds!${NOCOLOR}"
   echo -e "${BLUE}DEBUG: If it's not reachable, verify that host's port is listening to the port defined in $FARMSIM_DEDI_CONF${NOCOLOR}"
-  wine "$FARMSIM_DEDI_SOFTWARE"
+  "$PROTON_DIR/proton" run "$FARMSIM_DEDI_SOFTWARE"
 else
-  echo -e "${RED}Error: Dediserver software does not exist on the WINE side, unable to start the server!${NOCOLOR}"
+  echo -e "${RED}Error: Dediserver software does not exist on Proton side, unable to start the server!${NOCOLOR}"
   exit 1
 fi
 
