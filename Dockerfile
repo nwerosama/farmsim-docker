@@ -1,13 +1,11 @@
-FROM archlinux:base@sha256:1047e6e7878d58e4ee47e1cd6459a32fab41246b0efc4109e11b7ef16f50b14d
+FROM archlinux:base@sha256:345a872f6c95e082d4b8c050af637eebb57402c6e2177b411c3acf7df84eb33b
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
 ENV USERID=${USERID} GROUPID=${GROUPID}
 
 ARG WINE_ARCHIVE=https://archive.archlinux.org/packages/w/wine-staging
-ARG WINE_PKG=wine-staging-11.9-1-x86_64.pkg.tar.zst
-
-COPY container /
+ARG WINE_PKG=wine-staging-11.14-3-x86_64.pkg.tar.zst
 
 RUN echo -e " \n\
 [multilib] \n\
@@ -29,8 +27,10 @@ usermod -ou ${USERID} nobody &>/dev/null && groupmod -og ${GROUPID} users &>/dev
 mkdir -p /home/nobody && chown -R ${USERID}:${GROUPID} /home/nobody && chmod 755 /home/nobody
 
 # cleanup
-RUN rm -rf /${WINE_PKG} /var/cache/pacman/{pkg,sync} /usr/share/{man,doc} /var/tmp/* /tmp/* /root/.cache /home/nobody/.cache
+RUN rm -rf /root/.cache/winepkg/${WINE_PKG} /var/cache/pacman/{pkg,sync} /usr/share/{man,doc} /var/tmp/* /tmp/* /root/.cache /home/nobody/.cache
 RUN find /usr/lib -type f \( -name '*.a' -o -name '*.la' \) -delete && find /usr/share/applications -type f -delete
+
+COPY container /
 
 RUN mv /supervisor.sh /init.sh /root && chmod +x /root/*.sh && chmod +x /home/nobody/*.sh
 ENTRYPOINT ["bash", "-c", "/root/init.sh"]
