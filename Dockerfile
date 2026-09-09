@@ -1,18 +1,18 @@
-FROM archlinux:base@sha256:345a872f6c95e082d4b8c050af637eebb57402c6e2177b411c3acf7df84eb33b
+FROM archlinux:base@sha256:b944cc65c5f28665dfd5fdbf5ed2997c88f5bb4a0aefac7ee8a7ef01893e5ed9
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
 ENV USERID=${USERID} GROUPID=${GROUPID}
 
 ARG WINE_ARCHIVE=https://archive.archlinux.org/packages/w/wine-staging
-ARG WINE_PKG=wine-staging-11.14-3-x86_64.pkg.tar.zst
+ARG WINE_PKG=wine-staging-11.17-1-x86_64.pkg.tar.zst
 
 RUN echo -e " \n\
-[multilib] \n\
-Include = /etc/pacman.d/mirrorlist \n\n\
-[options] \n\
-IgnorePkg = wine-staging \n\
-" >> /etc/pacman.conf
+  [multilib] \n\
+  Include = /etc/pacman.d/mirrorlist \n\n\
+  [options] \n\
+  IgnorePkg = wine-staging \n\
+  " >> /etc/pacman.conf
 
 RUN chmod 755 /etc /usr
 
@@ -22,9 +22,9 @@ RUN --mount=type=cache,target=/root/.cache/winepkg mkdir -p /root/.cache/winepkg
 
 # setup user account
 RUN chsh -s /bin/bash nobody && \
-usermod -aG users nobody && \
-usermod -ou ${USERID} nobody &>/dev/null && groupmod -og ${GROUPID} users &>/dev/null && \
-mkdir -p /home/nobody && chown -R ${USERID}:${GROUPID} /home/nobody && chmod 755 /home/nobody
+  usermod -aG users nobody && \
+  usermod -ou ${USERID} nobody &>/dev/null && groupmod -og ${GROUPID} users &>/dev/null && \
+  mkdir -p /home/nobody && chown -R ${USERID}:${GROUPID} /home/nobody && chmod 755 /home/nobody
 
 # cleanup
 RUN rm -rf /root/.cache/winepkg/${WINE_PKG} /var/cache/pacman/{pkg,sync} /usr/share/{man,doc} /var/tmp/* /tmp/* /root/.cache /home/nobody/.cache
