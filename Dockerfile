@@ -10,7 +10,7 @@ RUN echo -e " \n\
   " >> /etc/pacman.conf
 
 ARG PROTON_RT=GE-Proton11-6
-ARG PROTON_FILE=${PROTON_RT}.tar.gz
+ARG PROTON_FILE=${PROTON_RT}-x86_64.tar.gz
 ARG PROTON_ARCHIVE=https://github.com/GloriousEggroll/proton-ge-custom/releases/download/${PROTON_RT}/${PROTON_FILE}
 
 RUN chmod 755 /etc /usr
