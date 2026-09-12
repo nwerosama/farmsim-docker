@@ -47,6 +47,9 @@ declare -A dlc_installer_patterns=(
   ["daimlerTruckPack"]="FarmingSimulator25_daimlerTruckPack_*.exe"
   ["highlandsFishingPack"]="FarmingSimulator25_highlandsFishingPack_*.exe"
   ["vredoPack"]="FarmingSimulator25_vredoPack_*.exe"
+  ["emergencyPack"]="FarmingSimulator25_emergencyPack_*.exe"
+  ["skyAgriculturePack"]="FarmingSimulator25_skyAgriculturePack_*.exe"
+  ["pumpsAndHosesPack"]="FarmingSimulator25_pumpsAndHosesPack_*.exe"
 )
 
 # Map of DLCs and their installers
@@ -58,6 +61,9 @@ declare -A dlcs=(
   ["Mercedes-Benz Trucks Pack"]="daimlerTruckPack"
   ["Highlands Fishing Expansion"]="highlandsFishingPack"
   ["Vredo Pack"]="vredoPack"
+  ["Emergency Pack"]="emergencyPack"
+  ["SKY Agriculture Pack"]="skyAgriculturePack"
+  ["Pumps N' Hoses Pack"]="pumpsAndHosesPack"
 )
 
 # Install DLC
