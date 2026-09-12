@@ -52,7 +52,7 @@ pacman -Rns $(pacman -Qdtq) --noconfirm && \
 pacman -Scc --noconfirm
 
 # Install specific version of wine-staging to try fix networking issues
-WINE_PKG=wine-staging-11.5-2-x86_64.pkg.tar.zst
+WINE_PKG=wine-staging-11.17-1-x86_64.pkg.tar.zst
 curl -sSLO https://archive.archlinux.org/packages/w/wine-staging/${WINE_PKG} && pacman -U --noconfirm ${WINE_PKG}
 
 # Prevent pacman from updating it
@@ -162,12 +162,7 @@ sed -i '/# ENVVARS_COMMON_PLACEHOLDER/{
 rm /tmp/envvars_heredoc
 
 # clean up unnecessary files to cut Docker image size down (3447 MB before adding this)
-rm -rf /var/cache/pacman/{pkg,sync}/* && \
-rm -rf /tmp/* && \
-rm -rf /var/tmp/* && \
-rm -rf /usr/share/{man,doc}/* && \
-rm -rf /root/.cache && \
-rm -rf /home/nobody/.cache && \
+rm -rf /var/cache/pacman/{pkg,sync}/* /tmp/* /var/tmp/* /usr/share/{man,doc}/* /root/.cache /home/nobody/.cache && \
 find /usr/lib -type f -name '*.a' -delete && \
 find /usr/lib -type f -name '*.la' -delete && \
 find /usr/share/applications -type f -delete
