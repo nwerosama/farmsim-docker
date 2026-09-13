@@ -7,11 +7,11 @@ export WINEARCH=win64
 export USER=nobody
 
 # Variables to make things easier
-FARMSIM_DOCS_PARENT="$WINEPREFIX/drive_c/users/$USER/Documents/My Games"
-FARMSIM_DOCS="$FARMSIM_DOCS_PARENT/FarmingSimulator2025"
+FARMSIM_DOCS="$WINEPREFIX/drive_c/users/$USER/Documents/My Games/FarmingSimulator2025"
 FARMSIM_DLCS="$FARMSIM_DOCS/pdlc/${dlc_name}.dlc"
 
 # Paths on filesystem
+DOCS_PATH="/opt/fs25/docs"
 DLC_PATH="/opt/fs25/dlc"
 
 # Debug info/warning/error color
@@ -20,8 +20,16 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 
+mkdir -p "$(dirname "$FARMSIM_DOCS")" "$DOCS_PATH"
+
+# Remove the stale profile and link it
+if [ -d "$FARMSIM_DOCS" ] && [ ! -L "$FARMSIM_DOCS" ]; then
+  rm -rf "$FARMSIM_DOCS"
+fi
+ln -sfn "$DOCS_PATH" "$FARMSIM_DOCS"
+
 # Create a clean 64bit Wineprefix
-if [ -d ~/.fs_server ]; then
+if [ ! -d ~/.fs_server ]; then
   wineboot
 fi
 
@@ -70,16 +78,25 @@ declare -A dlcs=(
 install_dlc() {
   local dlc_name=$1
   local exe_pattern=$2
+  local dlc_key=$3
+  local dlc_file="$FARMSIM_DOCS/pdlc/${dlc_key}.dlc"
 
-  if [ -f "$FARMSIM_DLCS" ]; then
+  if [ -f "$dlc_file" ]; then
     echo -e "${GREEN}INFO: ${dlc_name} already exists!${NOCOLOR}"
-  else
-    if ls $DLC_PATH/${exe_pattern} 1> /dev/null 2>&1; then
-      echo -e "${GREEN}INFO: Installing ${dlc_name}!${NOCOLOR}"
-      for i in $DLC_PATH/${exe_pattern}; do wine "$i" "/SILENT" "/NOCANCEL"; done
-      if [ -f "$FARMSIM_DLCS" ]; then
-        echo -e "${GREEN}INFO: ${dlc_name} is now installed!${NOCOLOR}"
-      fi
+    return
+  fi
+
+  if ls $DLC_PATH/${exe_pattern} 1> /dev/null 2>&1; then
+    echo -e "${GREEN}INFO: Installing ${dlc_name}!${NOCOLOR}"
+    for i in $DLC_PATH/${exe_pattern}; do
+      wine "$i" "/SILENT" "/NOCANCEL"
+    done
+    wineserver -w
+
+    if [ -f "$dlc_file" ]; then
+      echo -e "${GREEN}INFO: ${dlc_name} now installed!${NOCOLOR}"
+    else
+      echo -e "${RED}ERROR: ${dlc_name} installer finished but ${dlc_name} is missing!{$NOCOLOR}"
     fi
   fi
 }
@@ -90,5 +107,5 @@ for dlc in "${!dlcs[@]}"; do
 done
 
 for dlc in "${!dlcs[@]}"; do
-  install_dlc "$dlc" "${dlc_installer_patterns[${dlcs[$dlc]}]}"
+  install_dlc "$dlc" "${dlc_installer_patterns[${dlcs[$dlc]}]}" "${dlcs[$dlc]}"
 done
