@@ -1,4 +1,4 @@
-FROM archlinux:base@sha256:b944cc65c5f28665dfd5fdbf5ed2997c88f5bb4a0aefac7ee8a7ef01893e5ed9
+FROM archlinux:base@sha256:b21322c663be387c0ed9cbc7bbbfe18e41633ad4e7b7c77cfad45f128be20040
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
@@ -9,7 +9,7 @@ RUN echo -e " \n\
   Include = /etc/pacman.d/mirrorlist \
   " >> /etc/pacman.conf
 
-ARG PROTON_RT=GE-Proton11-6
+ARG PROTON_RT=GE-Proton11-7
 ARG PROTON_FILE=${PROTON_RT}-x86_64.tar.gz
 ARG PROTON_ARCHIVE=https://github.com/GloriousEggroll/proton-ge-custom/releases/download/${PROTON_RT}/${PROTON_FILE}
 
@@ -20,7 +20,7 @@ RUN pacman-key --init && pacman -Sy --noconfirm supervisor xorg-server-xvfb nett
 RUN --mount=type=cache,target=/root/.cache/proton-ge mkdir -p /root/.cache/proton-ge /opt/proton && cd /root/.cache/proton-ge && \
   [ -f "${PROTON_FILE}" ] || \
   curl -fsSLO ${PROTON_ARCHIVE} && tar -xf ${PROTON_FILE} -C /opt/proton
-RUN ln -sfn "/opt/proton/${PROTON_RT}" /opt/proton/current
+RUN ln -sfn "/opt/proton/${PROTON_RT}-x86_64" /opt/proton/current
 
 # setup user account
 RUN chsh -s /bin/bash nobody && \
