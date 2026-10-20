@@ -1,4 +1,4 @@
-FROM archlinux:base@sha256:b21322c663be387c0ed9cbc7bbbfe18e41633ad4e7b7c77cfad45f128be20040
+FROM archlinux:base@sha256:e43f1fd80e073992c5f173efbbbf65144170bf60aeb7369940087d63eacea8f4
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
@@ -9,7 +9,7 @@ RUN echo -e " \n\
   Include = /etc/pacman.d/mirrorlist \
   " >> /etc/pacman.conf
 
-ARG PROTON_RT=GE-Proton11-7
+ARG PROTON_RT=GE-Proton11-11
 ARG PROTON_FILE=${PROTON_RT}-x86_64.tar.gz
 ARG PROTON_ARCHIVE=https://github.com/GloriousEggroll/proton-ge-custom/releases/download/${PROTON_RT}/${PROTON_FILE}
 
