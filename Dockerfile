@@ -1,11 +1,11 @@
-FROM archlinux:base@sha256:b944cc65c5f28665dfd5fdbf5ed2997c88f5bb4a0aefac7ee8a7ef01893e5ed9
+FROM archlinux:base@sha256:e43f1fd80e073992c5f173efbbbf65144170bf60aeb7369940087d63eacea8f4
 LABEL org.opencontainers.image.source="https://github.com/nwerosama/farmsim-docker"
 
 ARG USERID=1000 GROUPID=1000
 ENV USERID=${USERID} GROUPID=${GROUPID}
 
 ARG WINE_ARCHIVE=https://archive.archlinux.org/packages/w/wine-staging
-ARG WINE_PKG=wine-staging-11.17-1-x86_64.pkg.tar.zst
+ARG WINE_PKG=wine-staging-11.20-1-x86_64.pkg.tar.zst
 
 RUN echo -e " \n\
   [multilib] \n\
