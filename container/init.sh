@@ -2,6 +2,10 @@
 
 set -e
 
+if [ ! -s /etc/machine-id ]; then
+  systemd-machine-id-setup
+fi
+
 XML_BASE_DIR="/home/nobody/xml"
 
 for DIR in "$XML_BASE_DIR"/*/; do
