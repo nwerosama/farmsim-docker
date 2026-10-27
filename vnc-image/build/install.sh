@@ -52,7 +52,7 @@ pacman -Rns $(pacman -Qdtq) --noconfirm && \
 pacman -Scc --noconfirm
 
 # Install specific version of wine-staging to try fix networking issues
-WINE_PKG=wine-staging-11.17-1-x86_64.pkg.tar.zst
+WINE_PKG=wine-staging-11.20-1-x86_64.pkg.tar.zst
 curl -sSLO https://archive.archlinux.org/packages/w/wine-staging/${WINE_PKG} && pacman -U --noconfirm ${WINE_PKG}
 
 # Prevent pacman from updating it
