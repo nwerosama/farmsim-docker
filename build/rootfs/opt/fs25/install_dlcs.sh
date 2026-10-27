@@ -58,6 +58,7 @@ declare -A dlc_installer_patterns=(
   ["emergencyPack"]="FarmingSimulator25_emergencyPack_*.exe"
   ["skyAgriculturePack"]="FarmingSimulator25_skyAgriculturePack_*.exe"
   ["pumpsAndHosesPack"]="FarmingSimulator25_pumpsAndHosesPack_*.exe"
+  ["beansAndAlpacasPack"]="FarmingSimulator25_beansAndAlpacasPack_*.exe"
 )
 
 # Map of DLCs and their installers
@@ -72,6 +73,7 @@ declare -A dlcs=(
   ["Emergency Pack"]="emergencyPack"
   ["SKY Agriculture Pack"]="skyAgriculturePack"
   ["Pumps N' Hoses Pack"]="pumpsAndHosesPack"
+  ["Beans & Alpacas Expansion"]="beansAndAlpacasPack"
 )
 
 # Install DLC
